@@ -1,4 +1,4 @@
-package com.zhangbin;
+package com.zhangbin.adpter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zhangbin.bean.Bean;
+import com.zhangbin.R;
 import com.zhangbin.bean.BeautyBean;
 
 import java.util.List;

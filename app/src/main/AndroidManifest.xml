@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         tools:replace="android:label"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity">
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,11 +21,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".GuideActivity"
+            android:name=".activity.GuideActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
 

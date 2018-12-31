@@ -1,13 +1,11 @@
-package com.zhangbin;
+package com.zhangbin.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-
+import com.zhangbin.R;
+import com.zhangbin.utils.ConstantsValue;
 import com.zhangbin.utils.SharedPreferencesUtils;
-
-import me.relex.circleindicator.CircleIndicator;
 
 
 /**
@@ -26,7 +24,7 @@ public class SplashActivity extends Activity {
      * 初始化数据
      */
     private void initData() {
-        boolean isFirstEnter = (Boolean) SharedPreferencesUtils.getParam(SplashActivity.this,"first_login",true);
+        boolean isFirstEnter = (Boolean) SharedPreferencesUtils.getParam(SplashActivity.this,ConstantsValue.XmlKeyName.FIRST_LOGIN,true);
         Intent intent;
         if (isFirstEnter){
             intent = new Intent(getApplicationContext(),GuideActivity.class);

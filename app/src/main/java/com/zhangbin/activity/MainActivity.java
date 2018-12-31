@@ -1,10 +1,9 @@
-package com.zhangbin;
+package com.zhangbin.activity;
 
 import android.app.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
@@ -14,13 +13,12 @@ import android.widget.Toast;
 
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
+import com.zhangbin.adpter.HomeAdapter;
+import com.zhangbin.R;
 import com.zhangbin.alipay.AlixDemo;
-import com.zhangbin.bean.Bean;
 import com.zhangbin.bean.BeautyBean;
 import com.zhangbin.qq.BaseUiListener;
 import com.zhangbin.utils.ToastUtils;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
