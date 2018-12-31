@@ -255,7 +255,7 @@ public class ToastUtils {
      * @author 张彬
      * @time 2018-12-31 12:12
      */
-    public static void showByIdDurationLocationImageToast(Context context, int resId,int gravity,int xOffset,int yOffset,int imageResource,int duration){
+    public static void showByIdDurationLocationImageToast(Context context, @StringRes int resId,int gravity,int xOffset,int yOffset,int imageResource,int duration){
         showLocationToast(context,context.getResources().getText(resId),gravity,xOffset,yOffset,imageResource,0,duration);
     }
     private static void showLocationToast(Context context, CharSequence charSequence, int gravity, int xOffset, int yOffset, int imageResource, int layoutResource, int duration) {

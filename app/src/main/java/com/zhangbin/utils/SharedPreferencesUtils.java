@@ -3,6 +3,8 @@ package com.zhangbin.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.zhangbin.Constants;
+
 /**
  * @Package: com.zhangbin.utils
  * @ClassName: SharedPreferencesUtils
@@ -19,12 +21,13 @@ public class SharedPreferencesUtils {
     /**
      * 保存数据的方法，我们需要拿到保存数据的具体类型，然后根据类型调用不同的保存方法
      * @param context
-     * @param key
+     * @param xmlKeyName
      * @param object
      */
-    public static void setParam(Context context , String key, Object object){
+    public static void setParam(Context context , Constants.XMLKeyName xmlKeyName, Object object){
 
         String type = object.getClass().getSimpleName();
+        String key = xmlKeyName.name();
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
 
@@ -49,14 +52,14 @@ public class SharedPreferencesUtils {
     /**
      * 得到保存数据的方法，我们根据默认值得到保存的数据的具体类型，然后调用相对于的方法获取值
      * @param context
-     * @param key
+     * @param xmlKeyName
      * @param defaultObject
      * @return
      */
-    public static Object getParam(Context context , String key, Object defaultObject){
+    public static Object getParam(Context context , Constants.XMLKeyName xmlKeyName, Object defaultObject){
         String type = defaultObject.getClass().getSimpleName();
+        String key = xmlKeyName.name();
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
-
         if("String".equals(type)){
             return sp.getString(key, (String)defaultObject);
         }
@@ -84,22 +87,23 @@ public class SharedPreferencesUtils {
      * 清除所有数据
      * @param context
      */
-    public static void clear(Context context) {
+    public static boolean  clearAll(Context context) {
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.clear().commit();
+        editor.clear();
+        return editor.commit();
     }
 
     /**
      * 清除指定数据
      * @param context
      */
-    public static void clearAll(Context context) {
+    public static void clearKey(Context context,Constants.XMLKeyName xmlKeyName) {
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.remove("定义的键名");
+        editor.remove(xmlKeyName.name());
         editor.commit();
     }
 }

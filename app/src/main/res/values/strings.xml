@@ -20,4 +20,5 @@
     <string name="Ensure">"确定"</string>
     <string name="Cancel">"取消"</string>
     <string name="check_sign_failed">您的订单信息已被非法篡改。</string>
+    <string name="guide_start">1111</string>
 </resources>
