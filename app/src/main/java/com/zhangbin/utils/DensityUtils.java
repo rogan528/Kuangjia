@@ -8,8 +8,6 @@ import android.util.TypedValue;
  * @Description: 单位转换类
  * @Author: 张彬
  * @CreateDate: 2018/12/7
- * @UpdateDate: 2018/12/7
- * @UpdateRemark: 更新说明
  */
 public class DensityUtils {
 
