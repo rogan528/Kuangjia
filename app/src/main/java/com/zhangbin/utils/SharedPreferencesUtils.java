@@ -11,15 +11,7 @@ import android.content.SharedPreferences;
  * @CreateDate: 2018-12-31 9:55
  */
 public class SharedPreferencesUtils {
-    /**
-     * 保存在手机里面的文件名
-     */
-    private static final String FILE_NAME = ConstantsValue.XML_NAME;
-    /**
-     * 保存在手机里面的模式
-     */
-    private static final int XML_MODLE = ConstantsValue.XML_MODLE;
-
+    private SharedPreferencesUtils(){throw new UnsupportedOperationException("不能被实例化");}
     /**
      * 保存数据的方法，我们需要拿到保存数据的具体类型，然后根据类型调用不同的保存方法
      * @param context
@@ -27,7 +19,8 @@ public class SharedPreferencesUtils {
      * @param object
      */
     public static void setParam(Context context ,ConstantsValue.XmlKeyName xmlKeyName, Object object){
-
+        String FILE_NAME = ConstantsValue.XML_NAME;
+        int XML_MODLE = ConstantsValue.XML_MODLE;
         String type = object.getClass().getSimpleName();
         String key = xmlKeyName.name();
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME, XML_MODLE);
@@ -56,6 +49,8 @@ public class SharedPreferencesUtils {
      * @return
      */
     public static Object getParam(Context context , ConstantsValue.XmlKeyName xmlKeyName, Object defaultObject){
+        String FILE_NAME = ConstantsValue.XML_NAME;
+        int XML_MODLE = ConstantsValue.XML_MODLE;
         String type = defaultObject.getClass().getSimpleName();
         String key = xmlKeyName.name();
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME, XML_MODLE);
@@ -79,6 +74,8 @@ public class SharedPreferencesUtils {
      * @param context
      */
     public static void clearAll(Context context) {
+        String FILE_NAME = ConstantsValue.XML_NAME;
+        int XML_MODLE = ConstantsValue.XML_MODLE;
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
                 XML_MODLE);
         SharedPreferences.Editor editor = sp.edit();
@@ -90,6 +87,8 @@ public class SharedPreferencesUtils {
      * @param context
      */
     public static void clearXmlKey(Context context,ConstantsValue.XmlKeyName xmlKeyName) {
+        String FILE_NAME = ConstantsValue.XML_NAME;
+        int XML_MODLE = ConstantsValue.XML_MODLE;
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME, XML_MODLE);
         SharedPreferences.Editor editor = sp.edit();
         editor.remove(xmlKeyName.name());
