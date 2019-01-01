@@ -29,7 +29,7 @@ public class SplashActivity extends Activity {
         if (isFirstEnter){
             intent = new Intent(getApplicationContext(),GuideActivity.class);
         }else{
-            intent = new Intent(getApplicationContext(),MainActivity.class);
+            intent = new Intent(getApplicationContext(),LoginActivity.class);
         }
         startActivity(intent);
         finish();

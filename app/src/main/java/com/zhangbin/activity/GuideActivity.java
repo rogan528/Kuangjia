@@ -58,7 +58,7 @@ public class GuideActivity extends Activity {
                         public void onClick(View v) {
                             SharedPreferencesUtils.setParam(getApplicationContext(), ConstantsValue.XmlKeyName.FIRST_LOGIN, false);
                             //跳到主页面
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                             finish();
                         }
                     });

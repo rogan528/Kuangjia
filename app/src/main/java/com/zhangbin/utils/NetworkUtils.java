@@ -19,7 +19,7 @@ public class NetworkUtils {
     /**
      * @param context
      * @return WiFi是否打开状态.返回打开
-     * @description WiFi是否打开，打开不一定连接
+     * @description WiFi是否打开，true是打开.但是不一定连接
      * @author 张彬
      * @time 2018/12/6 0:16
      */
@@ -36,7 +36,7 @@ public class NetworkUtils {
     /**
      * @param context
      * @return 网络是否连接,连接了不一定可以上网，有的需要认证
-     * @description 网络是否连接, 连接了不一定可以上网，有的需要认证
+     * @description 网络是否连接, true是连接.但是不一定可以上网，有的需要认证
      * @author 张彬
      * @time 2018/12/6 0:13
      */
@@ -48,7 +48,7 @@ public class NetworkUtils {
   /**
    * @description 判断是否是WiFi连接
    * @param
-   * @return  WiFi是否连接,连接不一定可以上网，有些需要认证
+   * @return  WiFi是否连接,true是连接.但是不一定可以上网，有些需要认证
    * @author 张彬
    * @time 2018/12/7 21:46
    */
@@ -58,7 +58,7 @@ public class NetworkUtils {
         return (networkInfo != null && (networkInfo.getType() == ConnectivityManager.TYPE_WIFI));
     }
     /**
-     * @return 网络是否可以上网，返回可以上网。
+     * @return 网络是否可以上网，true可以上网。
      * @description 网络即使开启也不一定可以上网，移动网络或者wifi可以上网，都返回0
      * @author 张彬
      * @time 2018/12/6 0:20
