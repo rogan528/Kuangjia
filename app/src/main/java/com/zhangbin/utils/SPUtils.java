@@ -21,7 +21,7 @@ public class SPUtils {
     private static final String DEFAULT_FILE_NAME = "share_date";
     private static final int XML_DEFAULT_MODE = Context.MODE_PRIVATE;
     private static SharedPreferences mSharedPreferences;
-    private static SPUtils mSharedPreferencesUtils;
+    private static SPUtils mSPUtils;
     private static SharedPreferences.Editor mEditor;
     public enum XMLKeyName {
         FIRST_LOGIN
@@ -57,10 +57,10 @@ public class SPUtils {
      * @return  初始化对象
      */
     public synchronized static SPUtils getInstance(@NonNull String fileName, @NonNull int xmlMode){
-        if (mSharedPreferencesUtils == null){
-            mSharedPreferencesUtils = new SPUtils(fileName,xmlMode);
+        if (mSPUtils == null){
+            mSPUtils = new SPUtils(fileName,xmlMode);
         }
-        return  mSharedPreferencesUtils;
+        return  mSPUtils;
 
     }
     /**
