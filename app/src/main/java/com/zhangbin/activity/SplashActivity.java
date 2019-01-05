@@ -4,10 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.zhangbin.Constants;
+import com.zhangbin.utils.Constants;
 import com.zhangbin.R;
-import com.zhangbin.utils.SharedPreferencesUtils;
-import com.zhangbin.utils.ToastUtils;
+import com.zhangbin.utils.SPUtils;
 
 
 /**
@@ -26,7 +25,7 @@ public class SplashActivity extends Activity {
      * 初始化数据
      */
     private void initData() {
-        boolean isFirstEnter = (Boolean) SharedPreferencesUtils.getParam(SplashActivity.this,Constants.XMLKeyName.FIRST_LOGIN,true);
+        boolean isFirstEnter = (Boolean) SPUtils.getInstance().getParam(SPUtils.XMLKeyName.FIRST_LOGIN,true);
         Intent intent;
         if (isFirstEnter){
             intent = new Intent(getApplicationContext(),GuideActivity.class);
