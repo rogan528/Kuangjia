@@ -16,6 +16,7 @@ import me.relex.circleindicator.CircleIndicator;
 
 /**
  * @Package: com.zhangbin
+ * @ClassName: GuideActivity
  * @Description: 新手引导页面
  * @Author: 张彬
  * @CreateDate: 2018-12-31 10:02
@@ -33,11 +34,12 @@ public class GuideActivity extends Activity {
     }
 
     private void initData() {
+        viewpager = findViewById(R.id.viewpager);
         mIamgeIds = Constants.mGuideIamgeIds;
     }
 
     private void initView() {
-        viewpager = findViewById(R.id.viewpager);
+        ViewPager viewpager = findViewById(R.id.viewpager);
         CircleIndicator indicator = findViewById(R.id.indicator);
         button = findViewById(R.id.btn_test);
         viewpager.setAdapter(new GuidePagerAdapter(mIamgeIds));
@@ -45,7 +47,7 @@ public class GuideActivity extends Activity {
         viewpager.setCurrentItem(0);
         viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int i, float v, int i1) {
+            public void onPageScrolled(int position, float v, int i1) {
 
             }
 
@@ -72,7 +74,5 @@ public class GuideActivity extends Activity {
 
             }
         });
-
-
     }
 }

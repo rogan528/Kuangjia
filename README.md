@@ -4,4 +4,5 @@ Kuangjia实现初始化页面定制，下面的按钮也可以定制几个按钮
 2.2018年12月14日添加网络工具类NetworkUtils，里面实现了isWiFiOpen（wifi是否开启），isNetworkConnected(网络是否连接，连接不代表可以上网，有些设置限制了)，isNetworkOnline（这个方法可以判断在线并且可以上网），
 2.2018年12月14日添加网络工具类NetworkUtils，里面实现了isWiFiOpen（wifi是否开启），isNetworkConnected(网络是否连接，连接不代表可以上网，例如登录认证啥的)，isNetworkOnline（这个方法可以判断在线并且可以上网），
 3.2018年12月31日更新Toast工具类,增加toast位置自定义和图片和文字一起显示的
+4.2019年1月1日增加环信SDK
 

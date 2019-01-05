@@ -61,8 +61,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         public final ImageView imageView;
         public ViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.textview);
-            imageView = (ImageView)itemView.findViewById(R.id.image_item);
+            textView = itemView.findViewById(R.id.textview);
+            imageView = itemView.findViewById(R.id.image_item);
         }
     }
     public interface OnItemClikListener{

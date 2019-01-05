@@ -3,10 +3,9 @@ package com.zhangbin.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.zhangbin.utils.Constants;
 import com.zhangbin.R;
 import com.zhangbin.utils.SPUtils;
+import com.zhangbin.utils.ConstantsValue;
 
 
 /**
@@ -30,7 +29,7 @@ public class SplashActivity extends Activity {
         if (isFirstEnter){
             intent = new Intent(getApplicationContext(),GuideActivity.class);
         }else{
-            intent = new Intent(getApplicationContext(),MainActivity.class);
+            intent = new Intent(getApplicationContext(),LoginActivity.class);
         }
         startActivity(intent);
         finish();

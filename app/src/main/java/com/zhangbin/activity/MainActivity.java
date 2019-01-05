@@ -21,7 +21,6 @@ import com.zhangbin.bean.TestBean;
 import com.zhangbin.qq.BaseUiListener;
 import com.zhangbin.utils.JsonListUtils;
 import com.zhangbin.utils.SPUtils;
-import com.zhangbin.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;

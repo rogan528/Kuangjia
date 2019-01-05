@@ -10,4 +10,12 @@
     <color name="TextColorGray">#FF505050</color>
     <color name="TextColorRed">#FFE26926</color>
     <color name="BgColor">#ffd1dce9</color>
+    <color name="bg_gray">#ececec</color>
+    <color name="common_white">#FFFFFF</color>
+    <color name="common_black">#333333</color>
+    <color name="et_hint_color">#adadad</color>
+    <color name="main_bg_color">#f5f5f5</color>
+    <color name="btn_grey_tv_color">#999999</color>
+    <color name="main_color_submit_grey">#eeeeee</color>
+    <color name="main_color_red">#ff3737</color>
 </resources>
