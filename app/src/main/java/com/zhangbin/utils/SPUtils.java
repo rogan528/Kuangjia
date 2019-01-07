@@ -91,7 +91,7 @@ public class SPUtils {
         }else if("ArrayList".equals(type)){
             Gson gson = new Gson();
             String datas = gson.toJson(value);
-            mEditor.putString(key, (String)datas);
+            mEditor.putString(key, datas);
         }
 
         return mEditor.commit();

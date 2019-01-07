@@ -23,9 +23,6 @@ public class GuidePagerAdapter extends PagerAdapter {
     private final Random random = new Random();
     private int mSize;
     private int [] iamgeIds;
-    public GuidePagerAdapter() {
-        mSize = 5;
-    }
     public GuidePagerAdapter(int [] iamgeIds) {
         mSize = iamgeIds.length;
         this.iamgeIds = iamgeIds;
@@ -49,11 +46,7 @@ public class GuidePagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup view, int position) {
         ImageView imageView = new ImageView(view.getContext());
-        //buttonView.setText(String.valueOf(position + 1));
-        imageView.setBackgroundColor(0xff000000 | random.nextInt(0x00ffffff));
-        //imageView.setGravity(Gravity.CENTER);
-        //imageView.setTextColor(Color.WHITE);
-        //imageView.setTextSize(48);
+        //imageView.setBackgroundColor(0xff000000 | random.nextInt(0x00ffffff));
         if (iamgeIds != null && iamgeIds.length >0) {
             imageView.setBackgroundResource(iamgeIds[position]);
         }

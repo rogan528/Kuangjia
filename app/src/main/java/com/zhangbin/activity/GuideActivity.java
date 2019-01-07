@@ -59,7 +59,6 @@ public class GuideActivity extends Activity {
                         @Override
                         public void onClick(View v) {
                             Boolean b =SPUtils.getInstance().setParam( SPUtils.XMLKeyName.FIRST_LOGIN, false);
-                            SPUtils.getInstance().setParam("is_login", false);
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
                         }

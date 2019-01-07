@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.zhangbin.R;
 import com.zhangbin.utils.SPUtils;
-import com.zhangbin.utils.ConstantsValue;
-
-
 /**
  *
  */

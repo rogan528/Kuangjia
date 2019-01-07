@@ -39,7 +39,7 @@
         <!-- 设置环信应用的AppKey -->
         <meta-data
             android:name="EASEMOB_APPKEY"
-            android:value="790681421#kuangjia" />
+            android:value="1107190106097194#kuangjia" />
 
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
