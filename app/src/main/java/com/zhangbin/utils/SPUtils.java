@@ -142,7 +142,7 @@ public class SPUtils {
      * @param xmlKeyName xml的key
      * @return true成功
      */
-    public boolean clearKey(Object xmlKeyName) {
+    public boolean removeKey(Object xmlKeyName) {
         Class enumCheck = xmlKeyName.getClass();
         String key ="";
         if ("String".equals(enumCheck.getSimpleName())){
