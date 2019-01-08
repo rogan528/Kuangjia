@@ -338,8 +338,8 @@ public class ToastUtils {
             ImageView image = new ImageView(context.getApplicationContext());
            image.setImageResource(imageResource);
            layout.addView(image, 0);
-           //TODO
-           // 自定义布局暂时先不写了
+           //TODO Toast自定义布局暂时先不写了
+           //
             mToast.setDuration(duration);
         } else {
             mToast.setText(charSequence);
