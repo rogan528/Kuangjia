@@ -1,23 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/btn_test"
-        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+    <android.support.v4.view.ViewPager
+         android:id="@+id/viewpager"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
-        android:text="@string/guide_start"
-        android:visibility="invisible"
-        android:layout_marginBottom="100dp"/>
+        android:layout_marginBottom="80dp"
+        android:gravity="center_horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/btn_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/guide_btn_start_red_bg"
+            android:gravity="center_horizontal"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:text="@string/guide_start"
+            android:textColor="@color/common_red"
+            android:textSize="@dimen/font_normal"
+            android:visibility="invisible"
+            />
+    </LinearLayout>
     <me.relex.circleindicator.CircleIndicator
         android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="48dp" />
-</FrameLayout>
+        android:layout_marginBottom="20dp" />
+    </FrameLayout>
+
+</LinearLayout>

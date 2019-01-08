@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">我的框架</string>
+    <string name="guide_start">开始体验</string>
+
+    <string name="title_login">登录</string>
+    <string name="user_login_zh_hint">请输入账号</string>
+    <string name="user_login_mm_hint">请输入密码</string>
+    <string name="txt_register">快速注册</string>
+    <string name="txt_reset">找回密码</string>
+    <string name="btn_login">登录</string>
+    <string name="user_forget_pwd">忘记密码</string>
+    <string name="btn_register">快速注册</string>
+    <string name="filter_vcode">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_</string>
+    <string name="Ensure">"确定"</string>
+    <string name="Cancel">"取消"</string>
+    <string name="check_sign_failed">您的订单信息已被非法篡改。</string>
+
+</resources>

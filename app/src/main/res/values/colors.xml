@@ -18,4 +18,133 @@
     <color name="btn_grey_tv_color">#999999</color>
     <color name="main_color_submit_grey">#eeeeee</color>
     <color name="main_color_red">#ff3737</color>
+
+
+
+    <color name="splash_bg_color">#231F20</color>
+    <color name="login_hint_color">#bbbbbb</color>
+    <color name="default_title">#2B2B2B</color>
+    <color name="default_content">#717171</color>
+    <color name="half_transparent">#40000000</color>
+    <color name="half_transparent2">#20000000</color>
+    <color name="half_transparent1">#90000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="title_font_color">#FFFFFF</color>
+    <color name="common_grey">#666666</color>
+    <color name="common_grey5">#555555</color>
+    <color name="common_orange">#FF4400</color>
+    <color name="common_blue">#3F9FE0</color>
+    <color name="common_red">#FF0000</color>
+    <color name="common_hint">#b0b0b0</color>
+    <color name="deep_gray">#394257</color>
+    <color name="border_gray">#d9dfe5</color>
+    <color name="light_gray">#99a4b7</color>
+    <color name="light_blue">#87d0f2</color>
+    <color name="common_yellow">#ffe12f</color>
+    <color name="page_list_line">#d7dbe4</color>
+    <color name="page_list_bg">#ebedf0</color>
+    <color name="text_underline">#848484</color>
+    <color name="car_view_bg">#4b5057</color>
+    <color name="img_bg">#e6e5e6</color>
+    <color name="common_tv">#0c0c0c</color>
+    <color name="tv_red">#df2f26</color>
+    <color name="tv_grey">#dadee2</color>
+    <color name="history_tv">#a0a0a0</color>
+    <color name="search_line">#e5e5e5</color>
+    <color name="time_line_color">#dddddd</color>
+    <color name="order_line">#d9d9d9</color>
+    <color name="dimgrey">#696969</color>
+    <color name="gray">#808080</color>
+    <color name="search_hint_clor">#b0b0b0</color>
+    <color name="actionbar_color">#df3d32</color>
+    <!-- 常用Button的色值 -->
+    <color name="btn_grey">#b7b7ba</color>
+    <color name="btn_grey_pressed">#909091</color>
+    <color name="btn_blue">#20CEB7</color>
+    <color name="btn_blue_pressed">#40CEB7</color>
+    <color name="btn_orange">#f0a25d</color>
+    <color name="btn_orange_pressed">#e0924d</color>
+    <color name="line">#DCDCDC</color>
+    <color name="waiting_circle_start">#FFFFFF</color>
+    <color name="waiting_circle_textcolor">#D5D5D5</color>
+    <color name="tab_bar_bg">#009E0F</color>
+    <color name="tab_bar_text">#AAAAAA</color>
+    <color name="save_btn_color">#0098fe</color>
+    <color name="btn_green_color">#7ce221</color>
+    <color name="tab_bar_text_selected">#FFFFFF</color>
+    <color name="right_actionbar_press">#99ccff</color>
+    <color name="right_actionbar_normal">#1572c2</color>
+    <color name="navi_button_bg_selected">#e9e9e9</color>
+    <color name="present_shenhuise_color">#4f4f4f</color>
+    <color name="present_lueqianhuise_color">#7c8182</color>
+    <color name="acitvity_details_focus_press_color">#c4c2c2</color>
+    <color name="acitvity_details_see_normal_color">#13C39C</color>
+    <color name="acitvity_details_see_press_color">#10A584</color>
+    <color name="acitvity_details_comments_normal_color">#14A5C2</color>
+    <color name="register_normal_color">#1C4C7C</color>
+    <color name="acitvity_details_focus_normal_color">#e2dfe1</color>
+    <color name="crouton_error">#FC490B</color>
+    <color name="crouton_error_bg">#E1DFE0</color>
+    <color name="crouton_success_bg">#fbc586</color>
+    <color name="crouton_success">#13C39C</color>
+    <color name="grid_bord_color">#cdcdcd</color>
+    <color name="edit_hint_color">#aeaeae</color>
+    <color name="order_grey">#8f8f8f</color>
+    <color name="action_del_pre">#d5031b</color>
+    <color name="action_del_nor">#e0041d</color>
+    <color name="color1">#A1E7F5</color>
+    <color name="color2">#FC9EC0</color>
+    <color name="color3">#FCDB72</color>
+    <color name="color4">#8BC89E</color>
+    <color name="color5">#F66763</color>
+    <color name="alarm_dispose_photo_line">#dbdada</color>
+
+    <!-- regist color -->
+    <color name="details_title">#505050</color>
+    <color name="details">#878787</color>
+    <color name="txt_red">#e0041d</color>
+    <color name="btn_red">#c42119</color>
+    <color name="user_grey">#8f8f8f</color>
+    <color name="coupon_red">#fd7875</color>
+    <color name="coupon_green">#90b073</color>
+    <color name="register_xieyi_color">#6f6f6f</color>
+    <color name="register_xieyi_color_line">#e5e5e5</color>
+    <!-- jbsc color -->
+    <color name="comment_text_color">#323333</color>
+    <color name="edit_text_color">#F0635A</color>
+    <color name="order_sub_bg">#f88d86</color>
+    <color name="comment_lint_color">#dedede</color>
+    <color name="region_text_color">#929292</color>
+    <color name="gold_text_color">#ffeb92</color>
+    <color name="sign_alert_color">#c9190d</color>
+    <color name="task_text_color">#df3d32</color>
+    <color name="gold_bg">#fdf1dc</color>
+    <color name="jb_grray">#fdf1dc</color>
+    <color name="order_gray">#bebebe</color>
+    <color name="date_border_color">#c6c6c6</color>
+    <color name="date_head_color">#e6e6e6</color>
+    <color name="date_head_line_color">#cacaca</color>
+    <color name="common_lint_color">#e5e5e5</color>
+    <!--首页-->
+    <color name="homepage_tv_red_color">#ff5c5c</color>
+    <color name="common_text_grey_color">#7c7c7c</color>
+    <color name="common_btn_grey_color">#e5e5e5</color>
+    <color name="packing_name_color">#ff5050</color>
+    <!--我的-->
+    <color name="shopp_info_tv_color">#818080</color>
+    <color name="product_detail_grey_color">#ececeb</color>
+    <color name="task_list_btn_red">#e0041d</color>
+    <color name="task_list_btn_blue">#2abaf6</color>
+    <color name="task_list_btn_grey">#b3b3b3</color>
+    <color name="task_list_btn_green">#5ad828</color>
+    <color name="task_list_btn_yellow">#f59a24</color>
+
+    <!--文字灰色-->
+    <color name="text_grey_color">#6f6f6f</color>
+    <color name="text_color_gray">#949494</color>
+    <color name="list_line_color">#efefef</color>
+    <color name="visit_statistics_bg_color">#f68e9a</color>
+    <color name="finish_btn_red">#fe4525</color>
+    <color name="page_head_name_color">#fff7f7</color>
+    <color name="orange_btn_color">#ff9b02</color>
 </resources>

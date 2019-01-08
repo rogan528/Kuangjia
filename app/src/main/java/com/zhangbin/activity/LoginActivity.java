@@ -17,14 +17,28 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
+import com.tencent.connect.common.Constants;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+import com.tencent.tauth.UiError;
 import com.zhangbin.R;
+import com.zhangbin.bean.QQLoginBean;
+import com.zhangbin.qq.BaseApiListener;
+import com.zhangbin.qq.BaseUiListener;
+import com.zhangbin.utils.LogUtils;
 import com.zhangbin.utils.ToastUtils;
+
+import org.json.JSONObject;
 
 
 /**
@@ -35,8 +49,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private EditText etMm;//密码
     private TextView hintMm;//显示/隐藏密码
     private TextView tvLogin;//登录
-    private Button tvRegister;//注册
+    private TextView tvRegister;//注册
     private TextView tvForget;//忘记密码
+    private ImageView mQQLogin;//QQ登录
+    private ImageView mWeChatLogin;//微信登录
     private String strZh;//账号
     private String strMm;//密码
     private boolean isHaveZh;//是否输入账号
@@ -47,11 +63,13 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private boolean mToExitYcard = false;//是否已点击两次返回按钮
     public static final String USER_ID = "userId";//用户ID
     public static final String USER_NAME = "userName";//用户ID
+    public static Tencent mTencent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
         initView();
+        mTencent = Tencent.createInstance("101538687", this.getApplicationContext());
     }
     private void initView() {
         etZh = (EditText) findViewById(R.id.user_tel);//账号
@@ -60,10 +78,14 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         hintMm.setOnClickListener(this);
         tvLogin = (TextView) findViewById(R.id.user_btn_login);//登录
         tvLogin.setOnClickListener(this);
-        tvRegister = (Button) findViewById(R.id.tv_register);//注册
+        tvRegister = (TextView) findViewById(R.id.tv_register);//注册
         tvRegister.setOnClickListener(this);
         tvForget = (TextView) findViewById(R.id.tv_forget_password);//忘记密码
         tvForget.setOnClickListener(this);
+        mQQLogin = findViewById(R.id.image_qq);//QQ登录
+        mQQLogin.setOnClickListener(this);
+        mWeChatLogin = findViewById(R.id.image_wechat);//微信登录
+        mWeChatLogin.setOnClickListener(this);
 
         etZh.addTextChangedListener(new TextWatcher() {
             @Override
@@ -143,13 +165,13 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             case R.id.hint_pwd:// 显示/隐藏密码
                 if (isShowPwd) {
                     isShowPwd = false;
-                    hintMm.setBackgroundResource(R.drawable.hint_pwd);
+                    hintMm.setBackgroundResource(R.mipmap.hint_pwd);
                     etMm.setTransformationMethod(PasswordTransformationMethod
                             .getInstance());
                     etMm.setSelection(etMm.getText().toString().length());
                 } else {
                     isShowPwd = true;
-                    hintMm.setBackgroundResource(R.drawable.hint_no_pwd);
+                    hintMm.setBackgroundResource(R.mipmap.hint_no_pwd);
                     etMm.setTransformationMethod(HideReturnsTransformationMethod
                             .getInstance());
                     etMm.setSelection(etMm.getText().toString().length());
@@ -162,9 +184,48 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             case R.id.tv_forget_password://忘记密码
                 //requestLogin();
                 break;
+            case R.id.image_qq://QQ登录
+                //requestLogin();
+                ToastUtils.showShortSystemToast(LoginActivity.this,"QQ登录");
+                loginQQ();
+                break;
+            case R.id.image_wechat://微信登录
+                //requestLogin();
+                ToastUtils.showShortSystemToast(LoginActivity.this,"微信登录");
+                break;
         }
     }
-/**
+
+    private void loginQQ() {
+            mTencent = Tencent.createInstance("101538687", this.getApplicationContext());
+            if (!mTencent.isSessionValid())
+            {
+                mTencent.login(this, "all", new IUiListener() {
+                    @Override
+                    public void onComplete(Object o) {
+                        Gson gson = new Gson();
+                        QQLoginBean qqLoginBean = gson.fromJson((String)o.toString(), QQLoginBean.class);
+                        if(qqLoginBean.ret ==0){
+                            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onError(UiError uiError) {
+
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+                });
+            }
+
+    }
+
+    /**
  * 登录
  */
     private void signIn() {
@@ -199,6 +260,13 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 }
             }
         }).start();
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        Tencent.onActivityResultData(requestCode,resultCode,data,new BaseUiListener());
+        super.onActivityResult(requestCode, resultCode, data);
+
     }
 }
 

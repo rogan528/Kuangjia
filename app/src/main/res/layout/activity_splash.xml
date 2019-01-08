@@ -2,9 +2,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/splash_bg_newyear">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@mipmap/splash_horse_newyear"/>
+    android:src="@mipmap/splash_horse_newyear">
 </LinearLayout>

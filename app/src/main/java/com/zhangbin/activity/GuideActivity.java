@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
 import com.zhangbin.utils.Constants;
 import com.zhangbin.R;
@@ -24,7 +24,7 @@ import me.relex.circleindicator.CircleIndicator;
 public class GuideActivity extends Activity {
     private int[] mIamgeIds;
     private ViewPager viewpager;
-    private Button button;
+    private TextView startBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +41,7 @@ public class GuideActivity extends Activity {
     private void initView() {
         ViewPager viewpager = findViewById(R.id.viewpager);
         CircleIndicator indicator = findViewById(R.id.indicator);
-        button = findViewById(R.id.btn_test);
+        startBtn = findViewById(R.id.btn_start);
         viewpager.setAdapter(new GuidePagerAdapter(mIamgeIds));
         indicator.setViewPager(viewpager);
         viewpager.setCurrentItem(0);
@@ -54,17 +54,17 @@ public class GuideActivity extends Activity {
             @Override
             public void onPageSelected(int position) {
                 if (position == mIamgeIds.length-1){
-                    button.setVisibility(View.VISIBLE);
-                    button.setOnClickListener(new View.OnClickListener() {
+                    startBtn.setVisibility(View.VISIBLE);
+                    startBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             Boolean b =SPUtils.getInstance().setParam( SPUtils.XMLKeyName.FIRST_LOGIN, false);
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                             finish();
                         }
                     });
                 }else {
-                    button.setVisibility(View.INVISIBLE);
+                    startBtn.setVisibility(View.INVISIBLE);
                 }
             }
 

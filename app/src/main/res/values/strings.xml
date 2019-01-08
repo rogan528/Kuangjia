@@ -28,7 +28,7 @@
     <string name="Ensure">"确定"</string>
     <string name="Cancel">"取消"</string>
     <string name="check_sign_failed">您的订单信息已被非法篡改。</string>
-    <string name="guide_start">1111</string>
+    <string name="guide_start">开始体验</string>
     <string name="title_activity_login">Sign in</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

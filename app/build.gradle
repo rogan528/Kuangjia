@@ -22,6 +22,12 @@ android {
         xiaomi {
             applicationId "com.zhangbin"
         }
+        baidu {
+            applicationId "com.zhangbin"
+        }
+        qq360 {
+            applicationId "com.zhangbin"
+        }
 
     }
     buildTypes {
