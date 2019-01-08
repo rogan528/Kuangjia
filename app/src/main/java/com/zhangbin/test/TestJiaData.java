@@ -1,8 +1,14 @@
-package com.zhangbin.utils;
+package com.zhangbin.test;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.util.Log;
 import com.zhangbin.bean.Bean;
 import com.zhangbin.bean.TestBean;
+import com.zhangbin.utils.JsonListUtils;
+import com.zhangbin.utils.SPUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 public class TestJiaData {

@@ -1,5 +1,6 @@
 package com.zhangbin.activity;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -64,12 +65,13 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     public static final String USER_ID = "userId";//用户ID
     public static final String USER_NAME = "userName";//用户ID
     public static Tencent mTencent;
+    private String QQApiKey = com.zhangbin.utils.Constants.QQAPIKey;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
         initView();
-        mTencent = Tencent.createInstance("101538687", this.getApplicationContext());
+        mTencent = Tencent.createInstance(QQApiKey, this.getApplicationContext());
     }
     private void initView() {
         etZh = (EditText) findViewById(R.id.user_tel);//账号
@@ -197,7 +199,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     private void loginQQ() {
-            mTencent = Tencent.createInstance("101538687", this.getApplicationContext());
+            mTencent = Tencent.createInstance(QQApiKey, this.getApplicationContext());
             if (!mTencent.isSessionValid())
             {
                 mTencent.login(this, "all", new IUiListener() {

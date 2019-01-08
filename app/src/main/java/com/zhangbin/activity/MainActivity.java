@@ -16,13 +16,9 @@ import com.tencent.tauth.Tencent;
 import com.zhangbin.adpter.HomeAdapter;
 import com.zhangbin.R;
 import com.zhangbin.alipay.AlixDemo;
-import com.zhangbin.bean.Bean;
 import com.zhangbin.bean.BeautyBean;
-import com.zhangbin.bean.TestBean;
 import com.zhangbin.qq.BaseUiListener;
-import com.zhangbin.utils.JsonListUtils;
-import com.zhangbin.utils.SPUtils;
-import com.zhangbin.utils.TestJiaData;
+import com.zhangbin.test.TestJiaData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +56,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
             @Override
             public void onItemClik(View view, int position) {
                 //Boolean b = SPUtils.getInstance().clearKey(SPUtils.XMLKeyName.FIRST_LOGIN);
-                //TODO 测试的假数据
+                //TODO 测试在SP中存储list数据
                 TestJiaData.testSPinputList();
                 Toast.makeText(MainActivity.this, "点击了" + position, Toast.LENGTH_LONG).show();
 

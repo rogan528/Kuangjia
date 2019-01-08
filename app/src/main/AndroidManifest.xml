@@ -60,6 +60,17 @@
             android:name=".activity.MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="@string/title_activity_login">
+        </activity>
+
+        <!--测试静态广播-->
+        <receiver android:name=".test.MyBroadcastReceiver">
+            <intent-filter>
+                <action android:name="staticBroadCast"/>
+            </intent-filter>
+        </receiver>
 
         <!--QQ登录-->
         <activity
@@ -108,10 +119,7 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name=".activity.LoginActivity"
-            android:label="@string/title_activity_login">
-        </activity>
+
     </application>
 
 </manifest>
