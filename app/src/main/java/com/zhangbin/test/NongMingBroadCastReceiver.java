@@ -6,20 +6,15 @@ import android.content.Intent;
 
 import com.zhangbin.utils.LogUtils;
 
-public class MyBroadcastReceiver extends BroadcastReceiver {
+public class NongMingBroadCastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String resultData = getResultData();
         String action = intent.getAction();
-        LogUtils.d("zhangbin111","----MyBroadcastReceiver接收到的广播---"+action);
+        LogUtils.d("zhangbin111","----NongMingBroadCastReceiver接收到的广播---"+action);
         switch (action){
-            case "staticBroadCast":
-                break;
             case "staticRegisterOrderBoradCast":
-                //终止广播
-                //abortBroadcast();
-                //修改数据 (扣留大米)
-                setResultData("习大大给每个村民发了500斤大米");
+                LogUtils.d("zhangbin111","----农民接收到---"+resultData);
                 break;
         }
     }

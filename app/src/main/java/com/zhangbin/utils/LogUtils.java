@@ -3,7 +3,7 @@ package com.zhangbin.utils;
 import android.util.Log;
 
 public class LogUtils {
-    private static boolean ISDEBUG = Constants.IS_DEBUG;
+    private static boolean ISDEBUG = ConstantsValue.IS_DEBUG;
     public static void e(String tag,String msg){
         if (ISDEBUG){
             Log.e(tag,msg);

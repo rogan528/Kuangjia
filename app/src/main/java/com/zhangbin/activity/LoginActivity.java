@@ -2,6 +2,7 @@ package com.zhangbin.activity;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -36,6 +37,8 @@ import com.zhangbin.R;
 import com.zhangbin.bean.QQLoginBean;
 import com.zhangbin.qq.BaseApiListener;
 import com.zhangbin.qq.BaseUiListener;
+import com.zhangbin.utils.ConstantsValue;
+import com.zhangbin.utils.DialogUtils;
 import com.zhangbin.utils.LogUtils;
 import com.zhangbin.utils.ToastUtils;
 
@@ -65,14 +68,31 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     public static final String USER_ID = "userId";//用户ID
     public static final String USER_NAME = "userName";//用户ID
     public static Tencent mTencent;
-    private String QQApiKey = com.zhangbin.utils.Constants.QQAPIKey;
+    private String QQApiKey = ConstantsValue.QQAPIKey;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
         initView();
         mTencent = Tencent.createInstance(QQApiKey, this.getApplicationContext());
+        initTestData();
     }
+
+    private void initTestData() {
+        DialogUtils.showDialog(LoginActivity.this, R.string.action_sign_in,"确定1", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+               // LogUtils.d("zhangbin111","积极按钮");
+            }
+        },"取消1",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //LogUtils.d("zhangbin111","取消按钮");
+
+            }
+        });
+    }
+
     private void initView() {
         etZh = (EditText) findViewById(R.id.user_tel);//账号
         etMm = (EditText) findViewById(R.id.user_password);//密码
@@ -162,7 +182,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.user_btn_login://登录
                 signIn();
-                //ToastUtils.showShortSystemToast(LoginActivity.this,"登录");
                 break;
             case R.id.hint_pwd:// 显示/隐藏密码
                 if (isShowPwd) {
@@ -193,7 +212,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.image_wechat://微信登录
                 //requestLogin();
-                ToastUtils.showShortSystemToast(LoginActivity.this,"微信登录");
+                //ToastUtils.showShortSystemToast(LoginActivity.this,"微信登录");
                 break;
         }
     }

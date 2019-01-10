@@ -7,9 +7,9 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
-import com.zhangbin.utils.Constants;
 import com.zhangbin.R;
 import com.zhangbin.adpter.GuidePagerAdapter;
+import com.zhangbin.utils.ConstantsValue;
 import com.zhangbin.utils.SPUtils;
 
 import me.relex.circleindicator.CircleIndicator;
@@ -35,7 +35,7 @@ public class GuideActivity extends Activity {
 
     private void initData() {
         viewpager = findViewById(R.id.viewpager);
-        mIamgeIds = Constants.mGuideIamgeIds;
+        mIamgeIds = ConstantsValue.mGuideIamgeIds;
     }
 
     private void initView() {

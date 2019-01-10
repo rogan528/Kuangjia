@@ -1,8 +1,5 @@
 package com.zhangbin.test;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.util.Log;
 import com.zhangbin.bean.Bean;
 import com.zhangbin.bean.TestBean;

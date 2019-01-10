@@ -67,8 +67,14 @@
 
         <!--测试静态广播-->
         <receiver android:name=".test.MyBroadcastReceiver">
-            <intent-filter>
+            <intent-filter android:priority="1000">
                 <action android:name="staticBroadCast"/>
+                <action android:name="staticRegisterOrderBoradCast"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".test.NongMingBroadCastReceiver">
+            <intent-filter android:priority="800">
+                <action android:name="staticRegisterOrderBoradCast"/>
             </intent-filter>
         </receiver>
 

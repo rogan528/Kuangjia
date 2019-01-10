@@ -4,16 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.StringRes;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.zhangbin.R;
 
 /**
  * @Package: com.zhangbin.utils
@@ -31,96 +24,100 @@ public class ToastUtils {
 /**
  * @description  系统短吐司
  * @param  context context对象
- * @param  message 内容
+ * @param  message 内容(R.string.xxxxxx也可以String)
  * @author 张彬
  * @time 2018/12/7 22:29
  */
-    public static void showShortSystemToast(Context context, String message) {
-        showDurationToast(context, message, Toast.LENGTH_SHORT);
+    public static void showShortSystemToast(Context context, Object message) {
+        String type = message.getClass().getSimpleName();
+        String toastMessage ="";
+        if("String".equals(type)){
+            toastMessage = (String) message;
+        } else if("Integer".equals(type)){
+            toastMessage = (String) context.getResources().getText((Integer) message);
+        }
+        showDurationToast(context, toastMessage, Toast.LENGTH_SHORT);
     }
     /**
      * @description  系统长吐司
      * @param  context context对象
-     * @param  message  内容
+     * @param  message  内容(R.string.xxxxxx也可以String)
      * @author 张彬
      * @time 2018/12/7 22:30
      */
-    public static void showLongSystemToast(Context context, String message) {
-        showDurationToast(context, message, Toast.LENGTH_LONG);
+    public static void showLongSystemToast(Context context, Object message) {
+        String type = message.getClass().getSimpleName();
+        String toastMessage ="";
+        if("String".equals(type)){
+            toastMessage = (String) message;
+        } else if("Integer".equals(type)){
+            toastMessage = (String) context.getResources().getText((Integer) message);
+        }
+        showDurationToast(context, toastMessage, Toast.LENGTH_LONG);
     }
     /**
      * @description  自定义时长,吐司
      * @param  context context对象
-     * @param  message 内容
+     * @param  message 内容(R.string.xxxxxx也可以String)
      * @param  duration 时长
      * @author 张彬
      * @time 2018/12/7 22:29
      */
-    public static void showDurationToast(Context context, String message,int duration) {
-        showToast(context, message, duration);
-    }
-    /**
-     * @description  通过ID资源，系统短吐司
-     * @param  context context对象
-     * @param  resId 资源ID:getResources().getString(R.string.xxxxxx);
-     * @author 张彬
-     * @time 2018/12/7 22:32
-     */
-    public static void showByIdShortSystemToast(Context context,@StringRes int resId){
-        showByIdDurationToast(context,resId,Toast.LENGTH_SHORT);
-    }
-    /**
-     * @description  通过ID资源，系统长吐司
-     * @param  context context对象
-     * @param  resId 资源ID:getResources().getString(R.string.xxxxxx);
-     * @author 张彬
-     * @time 2018/12/7 22:32
-     */
-    public static void showByIdLongSystemToast(Context context,@StringRes int resId){
-        showByIdDurationToast(context,resId,Toast.LENGTH_SHORT);
-    }
-    /**
-     * @description  通过ID资源，自定义时长吐司
-     * @param  context context对象
-     * @param  resId 资源ID (eg: getResources().getString(R.string.xxxxxx);)
-     * @param  duration 时长
-     * @author 张彬
-     * @time 2018/12/7 22:33
-     */
-    public static void showByIdDurationToast(Context context, @StringRes int resId, int duration){
-        showToast(context,context.getResources().getText(resId),duration);
+    public static void showDurationToast(Context context, Object message,int duration) {
+        String type = message.getClass().getSimpleName();
+        String toastMessage ="";
+        if("String".equals(type)){
+            toastMessage = (String) message;
+        } else if("Integer".equals(type)){
+            toastMessage = (String) context.getResources().getText((Integer) message);
+        }
+        showToast(context, toastMessage, duration);
     }
     /**
      * @description 自定义位置的系统短吐司
      * @param context context对象
-     * @param message 内容
+     * @param message 内容(R.string.xxxxxx也可以String)
      * @param gravity 位置(eg:int gavity = Gravity.CENTER| Gravity.BOTTOM)
      * @param xOffset  x方向偏移量,正数
      * @param yOffset  y方向偏移量,负数
      * @author 张彬
      * @time 2018-12-31 12:09
      */
-    public static void showShortLocationToast(Context context,String message,int gravity,int xOffset,int yOffset){
-        showDurationLocationToast(context,message,gravity,xOffset,yOffset,Toast.LENGTH_SHORT);
+    public static void showShortLocationToast(Context context,Object message,int gravity,int xOffset,int yOffset){
+        String type = message.getClass().getSimpleName();
+        String toastMessage ="";
+        if("String".equals(type)){
+            toastMessage = (String) message;
+        } else if("Integer".equals(type)){
+            toastMessage = (String) context.getResources().getText((Integer) message);
+        }
+        showDurationLocationToast(context,toastMessage,gravity,xOffset,yOffset,Toast.LENGTH_SHORT);
 
     }
     /**
      * @description 自定义位置的系统长吐司
      * @param context context对象
-     * @param message 内容
+     * @param message 内容(R.string.xxxxxx也可以String)
      * @param gravity 位置(eg:int gavity = Gravity.CENTER| Gravity.BOTTOM)
      * @param xOffset  x方向偏移量,正数
      * @param yOffset  y方向偏移量,负数
      * @author 张彬
      * @time 2018-12-31 12:09
      */
-    public static void showLongLocationToast(Context context,String message,int gravity,int xOffset,int yOffset){
-        showDurationLocationToast(context,message,gravity,xOffset,yOffset,Toast.LENGTH_LONG);
+    public static void showLongLocationToast(Context context,Object message,int gravity,int xOffset,int yOffset){
+        String type = message.getClass().getSimpleName();
+        String toastMessage ="";
+        if("String".equals(type)){
+            toastMessage = (String) message;
+        } else if("Integer".equals(type)){
+            toastMessage = (String) context.getResources().getText((Integer) message);
+        }
+        showDurationLocationToast(context,toastMessage,gravity,xOffset,yOffset,Toast.LENGTH_LONG);
     }
     /**
      * @description 自定义位置+自定义时长吐司
      * @param context context对象
-     * @param message 内容
+     * @param message 内容(R.string.xxxxxx也可以String)
      * @param gravity 位置(eg:int gavity = Gravity.CENTER| Gravity.BOTTOM)
      * @param xOffset  x方向偏移量,正数
      * @param yOffset  y方向偏移量,负数
@@ -128,53 +125,20 @@ public class ToastUtils {
      * @author 张彬
      * @time 2018-12-31 12:09
      */
-    public static void showDurationLocationToast(Context context,String message,int gravity,int xOffset,int yOffset,int duration){
-        showLocationToast(context,message,gravity,xOffset,yOffset,0,0,duration);
-    }
-    /**
-     * @description 通过ID资源，自定义位置的短吐司
-     * @param context context对象
-     * @param resId 资源ID:getResources().getString(R.string.xxxxxx);
-     * @param gravity 位置(eg:int gavity = Gravity.CENTER| Gravity.BOTTOM)
-     * @param xOffset  x方向偏移量,正数
-     * @param yOffset  y方向偏移量,负数
-     * @author 张彬
-     * @time 2018-12-31 13:30
-     */
-    public static void showByIdShortLocationToast(Context context,@StringRes int resId,int gravity,int xOffset,int yOffset){
-        showByIdDurationLocationToast(context,resId,gravity,xOffset,yOffset,0,Toast.LENGTH_SHORT);
-    }
-    /**
-     * @description 通过ID资源，自定义位置的长吐司
-     * @param context context对象
-     * @param resId 资源ID:getResources().getString(R.string.xxxxxx);
-     * @param gravity 位置(eg:int gavity = Gravity.CENTER| Gravity.BOTTOM)
-     * @param xOffset  x方向偏移量,正数
-     * @param yOffset  y方向偏移量,负数
-     * @author 张彬
-     * @time 2018-12-31 12:09
-     */
-    public static void showByIdLongLocationToast(Context context,@StringRes int resId,int gravity,int xOffset,int yOffset){
-        showByIdDurationLocationToast(context,resId,gravity,xOffset,yOffset,0,Toast.LENGTH_SHORT);
-    }
-    /**
-     * @description 通过ID资源，自定义位置 自定义时长的吐司
-     * @param context context对象
-     * @param resId 资源ID:getResources().getString(R.string.xxxxxx);
-     * @param gravity 位置(eg:int gavity = Gravity.CENTER| Gravity.BOTTOM)
-     * @param xOffset  x方向偏移量,正数
-     * @param yOffset  y方向偏移量,负数
-     * @param duration  自定义时长
-     * @author 张彬
-     * @time 2018-12-31 12:30
-     */
-    public static void showByIdDurationLocationToast(Context context, int resId, int gravity, int xOffset, int yOffset, int imageResource, int duration) {
-        showLocationToast(context,context.getResources().getText(resId),gravity,xOffset,yOffset,imageResource,0,duration);
+    public static void showDurationLocationToast(Context context,Object message,int gravity,int xOffset,int yOffset,int duration){
+        String type = message.getClass().getSimpleName();
+        String toastMessage ="";
+        if("String".equals(type)){
+            toastMessage = (String) message;
+        } else if("Integer".equals(type)){
+            toastMessage = (String) context.getResources().getText((Integer) message);
+        }
+        showLocationToast(context,toastMessage,gravity,xOffset,yOffset,0,0,duration);
     }
     /**
      * @description 自定义图片+文字 自定义位置的系统短吐司
      * @param context context对象
-     * @param message 内容
+     * @param message 内容(R.string.xxxxxx也可以String)
      * @param gravity 位置(eg:int gavity = Gravity.CENTER| Gravity.BOTTOM)
      * @param xOffset  x方向偏移量,正数
      * @param yOffset  y方向偏移量,负数
@@ -182,13 +146,20 @@ public class ToastUtils {
      * @author 张彬
      * @time 2018-12-31 12:11
      */
-    public static void showShortLocationImageToast(Context context,String message,int gravity,int xOffset,int yOffset,int imageResource){
-        showDurationLocationImageToast(context,message,gravity,xOffset,yOffset,imageResource,Toast.LENGTH_SHORT);
+    public static void showShortLocationImageToast(Context context,Object message,int gravity,int xOffset,int yOffset,int imageResource){
+        String type = message.getClass().getSimpleName();
+        String toastMessage ="";
+        if("String".equals(type)){
+            toastMessage = (String) message;
+        } else if("Integer".equals(type)){
+            toastMessage = (String) context.getResources().getText((Integer) message);
+        }
+        showDurationLocationImageToast(context,toastMessage,gravity,xOffset,yOffset,imageResource,Toast.LENGTH_SHORT);
     }
     /**
      * @description 自定义图片+文字 自定义位置的系统长吐司
      * @param context context对象
-     * @param message 内容
+     * @param message 内容(R.string.xxxxxx也可以String)
      * @param gravity 位置(eg:int gavity = Gravity.CENTER| Gravity.BOTTOM)
      * @param xOffset  x方向偏移量,正数
      * @param yOffset  y方向偏移量,负数
@@ -196,13 +167,20 @@ public class ToastUtils {
      * @author 张彬
      * @time 2018-12-31 12:12
      */
-    public static void showLongLocationImageToast(Context context,String message,int gravity,int xOffset,int yOffset,int imageResource){
-        showDurationLocationImageToast(context,message,gravity,xOffset,yOffset,imageResource,Toast.LENGTH_LONG);
+    public static void showLongLocationImageToast(Context context,Object message,int gravity,int xOffset,int yOffset,int imageResource){
+        String type = message.getClass().getSimpleName();
+        String toastMessage ="";
+        if("String".equals(type)){
+            toastMessage = (String) message;
+        } else if("Integer".equals(type)){
+            toastMessage = (String) context.getResources().getText((Integer) message);
+        }
+        showDurationLocationImageToast(context,toastMessage,gravity,xOffset,yOffset,imageResource,Toast.LENGTH_LONG);
     }
     /**
      * @description 自定义图片+文字位置+自定义时长  吐司
      * @param context context对象
-     * @param message 内容
+     * @param message 内容(R.string.xxxxxx也可以String)
      * @param gravity 位置(eg:int gavity = Gravity.CENTER| Gravity.BOTTOM)
      * @param xOffset  x方向偏移量,正数
      * @param yOffset  y方向偏移量,负数
@@ -211,52 +189,15 @@ public class ToastUtils {
      * @author 张彬
      * @time 2018-12-31 12:12
      */
-    public static void showDurationLocationImageToast(Context context,String message,int gravity,int xOffset,int yOffset,int imageResource,int duration){
-        showLocationToast(context,message,gravity,xOffset,yOffset,imageResource,0,duration);
-    }
-    /**
-     * @description 通过ID资源，自定义图片+文字位置的系统短吐司
-     * @param context context对象
-     * @param resId 资源ID:getResources().getString(R.string.xxxxxx);
-     * @param gravity 位置(eg:int gavity = Gravity.CENTER| Gravity.BOTTOM)
-     * @param xOffset  x方向偏移量,正数
-     * @param yOffset  y方向偏移量,负数
-     * @param imageResource  图片资源
-     * @author 张彬
-     * @time 2018-12-31 12:12
-     */
-    public static void showByIdShortLocationImageToast(Context context,@StringRes int resId,int gravity,int xOffset,int yOffset,int imageResource){
-        showByIdDurationLocationImageToast(context,resId,gravity,xOffset,yOffset,imageResource,Toast.LENGTH_SHORT);
-
-    }
-    /**
-     * @description 通过ID资源，自定义图片+文字位置的系统长吐司
-     * @param context context对象
-     * @param resId 资源ID:getResources().getString(R.string.xxxxxx);
-     * @param gravity 位置(eg:int gavity = Gravity.CENTER| Gravity.BOTTOM)
-     * @param xOffset  x方向偏移量,正数
-     * @param yOffset  y方向偏移量,负数
-     * @param imageResource  图片资源
-     * @author 张彬
-     * @time 2018-12-31 12:12
-     */
-    public static void showByIdLongLocationImageToast(Context context,@StringRes int resId,int gravity,int xOffset,int yOffset,int imageResource){
-        showByIdDurationLocationImageToast(context,resId,gravity,xOffset,yOffset,imageResource,Toast.LENGTH_LONG);
-    }
-    /**
-     * @description 通过ID资源，自定义图片+文字位置 自定义时长吐司
-     * @param context context对象
-     * @param resId 资源ID:getResources().getString(R.string.xxxxxx);
-     * @param gravity 位置(eg:int gavity = Gravity.CENTER| Gravity.BOTTOM)
-     * @param xOffset  x方向偏移量,正数
-     * @param yOffset  y方向偏移量,负数
-     * @param imageResource  图片资源
-     * @param duration  时长
-     * @author 张彬
-     * @time 2018-12-31 12:12
-     */
-    public static void showByIdDurationLocationImageToast(Context context, @StringRes int resId,int gravity,int xOffset,int yOffset,int imageResource,int duration){
-        showLocationToast(context,context.getResources().getText(resId),gravity,xOffset,yOffset,imageResource,0,duration);
+    public static void showDurationLocationImageToast(Context context,Object message,int gravity,int xOffset,int yOffset,int imageResource,int duration){
+        String type = message.getClass().getSimpleName();
+        String toastMessage ="";
+        if("String".equals(type)){
+            toastMessage = (String) message;
+        } else if("Integer".equals(type)){
+            toastMessage = (String) context.getResources().getText((Integer) message);
+        }
+        showLocationToast(context,toastMessage,gravity,xOffset,yOffset,imageResource,0,duration);
     }
     private static void showLocationToast(Context context, CharSequence charSequence, int gravity, int xOffset, int yOffset, int imageResource, int layoutResource, int duration) {
         boolean flag = (mAdapter == null || mAdapter.displayable());
@@ -339,7 +280,6 @@ public class ToastUtils {
            image.setImageResource(imageResource);
            layout.addView(image, 0);
            //TODO Toast自定义布局暂时先不写了
-           //
             mToast.setDuration(duration);
         } else {
             mToast.setText(charSequence);

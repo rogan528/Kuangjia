@@ -1,7 +1,9 @@
 package com.zhangbin.activity;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -9,27 +11,30 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.zhangbin.R;
-import com.zhangbin.test.MyBroadcastReceiver;
-import com.zhangbin.test.TestJiaData;
-import com.zhangbin.utils.Constants;
+import com.zhangbin.test.FinalReceiver;
+import com.zhangbin.utils.ConstantsValue;
+import com.zhangbin.utils.DialogUtils;
+import com.zhangbin.utils.LogUtils;
 import com.zhangbin.utils.SPUtils;
 /**
  *
  */
 public class SplashActivity extends Activity {
-    private long splashTime = Constants.mGuideHandlerTime;
+    private long splashTime = ConstantsValue.mGuideHandlerTime;
     private Handler mHandler;
     private  int MSG_STOP_SPLASH = 1;
-    private MyBroadcastReceiver myBroadcastReceiver;
+    private MyInnerBroadcastReceiver myInnerBroadcastReceiver;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         initData();
         mHandler.sendEmptyMessageDelayed(MSG_STOP_SPLASH, splashTime);
-        //TODO 测试静态广播
+        //TODO 测试静态无序广播
         staticBroadCast(SplashActivity.this);
         dynamicRegisterBoradCastReceiver(SplashActivity.this);
+        //TODO 测试有序广播
+        staticRegisterOrderBoradCastReceiver(SplashActivity.this);
     }
 
     /**
@@ -62,16 +67,38 @@ public class SplashActivity extends Activity {
         context.sendBroadcast(intent);
     }
     public void  dynamicRegisterBoradCastReceiver(Context context){
-        myBroadcastReceiver = new MyBroadcastReceiver();
+        myInnerBroadcastReceiver = new MyInnerBroadcastReceiver();
         IntentFilter myIntentFilter = new IntentFilter();
         myIntentFilter.addAction("dynamicBroadCast");
-        context.registerReceiver(myBroadcastReceiver, myIntentFilter);
+        context.registerReceiver(myInnerBroadcastReceiver, myIntentFilter);
+
         Intent intent = new Intent("dynamicBroadCast");
+        intent.putExtra("test","testValue");
         context.sendBroadcast(intent);
+    }
+    public void  staticRegisterOrderBoradCastReceiver(Context context){
+        Intent intent = new Intent("staticRegisterOrderBoradCast");
+        intent.putExtra("test","testValue");
+        intent.setPackage(context.getPackageName());
+        context.sendOrderedBroadcast(intent, null, new FinalReceiver(), null, 1, "习大大给每个村民发了1000斤大米", null);
     }
     @Override
     protected void onStop() {
         super.onStop();
-        unregisterReceiver(myBroadcastReceiver);
+        unregisterReceiver(myInnerBroadcastReceiver);
+    }
+
+    class MyInnerBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            LogUtils.d("zhangbin111","----MyInnerBroadcastReceiver接收到的广播---"+action);
+            switch (action){
+                case "dynamicBroadCast":
+                    String testValue = intent.getStringExtra("test");
+                    LogUtils.d("zhangbin111","--testValue--"+testValue);
+                    break;
+            }
+        }
     }
 }
