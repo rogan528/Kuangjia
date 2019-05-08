@@ -63,5 +63,17 @@ public class DensityUtils {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
                 spValue, context.getResources().getDisplayMetrics());
     }
-
+    /**
+     * @description  pt转px
+     * @param  context
+     * @param  ptValue
+     * @return  px
+     * @author 张彬
+     * @time 2018/12/7 21:57
+     *
+     */
+    public static int pt2px(Context context, float ptValue) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PT,
+                ptValue, context.getResources().getDisplayMetrics());
+    }
 }
