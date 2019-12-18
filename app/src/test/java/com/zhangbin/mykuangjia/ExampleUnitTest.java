@@ -1,4 +1,4 @@
-package com.zhangbin;
+package com.zhangbin.mykuangjia;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.zhangbin;
+package com.zhangbin.mykuangjia;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.zhangbin", appContext.getPackageName());
+        assertEquals("com.zhangbin.mykuangjia", appContext.getPackageName());
     }
 }
