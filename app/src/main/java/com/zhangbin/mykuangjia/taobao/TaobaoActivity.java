@@ -63,7 +63,7 @@ public class TaobaoActivity extends AppCompatActivity {
             map.put("ItemImage",R.mipmap.ic_launcher);
             mapArrayList.add(map);
         }
-        adapters = new LinkedList<>();
+        //adapters = new LinkedList<>();
 
     }
     private void initAdapter() {
@@ -93,10 +93,10 @@ public class TaobaoActivity extends AppCompatActivity {
         linearLayoutAdapter =new TaobaoAdapter(mapArrayList,mContext,20,linearLayoutHelper);
 
 
-        adapters.add(linearLayoutAdapter);
+        //adapters.add(linearLayoutAdapter);
         delegateAdapter = new DelegateAdapter(mVirtualLayoutManager);
-        delegateAdapter.setAdapters(adapters);
-
+        //delegateAdapter.setAdapters(adapters);
+        delegateAdapter.addAdapter(linearLayoutAdapter);
         mRecyclerView.setAdapter(delegateAdapter);
 
     }
