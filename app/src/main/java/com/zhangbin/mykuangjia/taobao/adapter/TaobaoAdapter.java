@@ -52,7 +52,7 @@ public class TaobaoAdapter extends DelegateAdapter.Adapter<TaobaoAdapter.MainVie
     public int getItemCount() {
         return count;
     }
-    class MainViewHolder extends RecyclerView.ViewHolder{
+    public class MainViewHolder extends RecyclerView.ViewHolder{
         public TextView textView;
         public ImageView imageView;
 
