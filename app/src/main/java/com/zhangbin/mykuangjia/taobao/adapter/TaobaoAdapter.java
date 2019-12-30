@@ -35,7 +35,15 @@ public class TaobaoAdapter extends DelegateAdapter.Adapter<TaobaoAdapter.MainVie
         return layoutHelper;
     }
 
-
+    private OnItemClickListener onItemClickListener;
+    //创建接口
+    public interface OnItemClickListener{
+        void onItemClickListener(int position);
+    }
+    //外界调用的方法
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
     @NonNull
     @Override
     public MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -44,10 +52,19 @@ public class TaobaoAdapter extends DelegateAdapter.Adapter<TaobaoAdapter.MainVie
 
     @Override
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
+        final int layoutPosition = holder.getLayoutPosition ();
+        //必须在itemView的点击事件里面判断
+        holder.itemView.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                if(onItemClickListener!=null){
+                    onItemClickListener.onItemClickListener (layoutPosition);
+                }
+            }
+        });
         holder.textView.setText((String) mapArrayList.get(position).get("ItemTitle"));
         holder.imageView.setImageResource((Integer) mapArrayList.get(position).get("ItemImage"));
     }
-
     @Override
     public int getItemCount() {
         return count;

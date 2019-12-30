@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
@@ -44,6 +45,12 @@ public class TaobaoActivity extends AppCompatActivity {
         initView();
         initData();
         initAdapter();
+        linearLayoutAdapter.setOnItemClickListener(new TaobaoAdapter.OnItemClickListener () {
+            @Override
+            public void onItemClickListener(int position) {
+                Toast.makeText(mContext,"点击了第"+position+"个",Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
     /**
