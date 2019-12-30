@@ -29,9 +29,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class TaobaoActivity extends AppCompatActivity {
-    private RecyclerView mRecyclerView;
-    private ArrayList<HashMap<String,Object>> mapArrayList;
-    private VirtualLayoutManager mVirtualLayoutManager;
+    private RecyclerView recyclerView;
+    private ArrayList listItem;
     private Context mContext;
     private TaobaoAdapter linearLayoutAdapter,stickyLayoutAdapter,gridLayoutAdapter;
     DelegateAdapter delegateAdapter;
@@ -47,42 +46,36 @@ public class TaobaoActivity extends AppCompatActivity {
         initAdapter();
 
     }
-
-
-
+    /**
+     * 初始化控件
+     */
     private void initView() {
-        mRecyclerView = findViewById(R.id.taobao_recycler_view);
-        mVirtualLayoutManager = new VirtualLayoutManager(mContext);
-
+        recyclerView = findViewById(R.id.my_recycler_view);
     }
     /**
      * 添加数据
      */
     private void initData() {
-        mapArrayList = new ArrayList<>();
-        HashMap<String,Object> map;
+        listItem = new ArrayList<HashMap<String,Object>>();
         for (int i=0;i<100;i++){
-            map = new HashMap<>();
+            HashMap<String,Object> map = new HashMap<>();
             map.put("ItemTitle","第"+i+"行");
             map.put("ItemImage",R.mipmap.ic_launcher);
-            mapArrayList.add(map);
+            listItem.add(map);
         }
-        //adapters = new LinkedList<>();
-
     }
     private void initAdapter() {
-        mRecyclerView.setLayoutManager(mVirtualLayoutManager);
+        VirtualLayoutManager virtualLayoutManager = new VirtualLayoutManager(mContext);
+        recyclerView.setLayoutManager(virtualLayoutManager);
         RecyclerView.RecycledViewPool recycledViewPool = new RecyclerView.RecycledViewPool();
-        mRecyclerView.setRecycledViewPool(recycledViewPool);
+        recyclerView.setRecycledViewPool(recycledViewPool);
         recycledViewPool.setMaxRecycledViews(0,10);
-        delegateAdapter = new DelegateAdapter(mVirtualLayoutManager);
+        delegateAdapter = new DelegateAdapter(virtualLayoutManager);
         linearLayoutShow();
         stickyLayoutShow();
         gridLayoutShow();
-        mRecyclerView.setAdapter(delegateAdapter);
-
+        recyclerView.setAdapter(delegateAdapter);
     }
-
 
 
 
@@ -101,12 +94,7 @@ public class TaobaoActivity extends AppCompatActivity {
         linearLayoutHelper.setMarginBottom(10);
         //设置背景颜色
         //linearLayoutHelper.setBgColor();
-        linearLayoutAdapter =new TaobaoAdapter(mapArrayList,mContext,20,linearLayoutHelper);
-
-
-        //adapters.add(linearLayoutAdapter);
-
-        //delegateAdapter.setAdapters(adapters);
+        linearLayoutAdapter =new TaobaoAdapter(listItem,mContext,20,linearLayoutHelper);
         delegateAdapter.addAdapter(linearLayoutAdapter);
 
 
@@ -117,12 +105,12 @@ public class TaobaoActivity extends AppCompatActivity {
         stickyLayoutHelper.setItemCount(1);
         stickyLayoutHelper.setAspectRatio(3);
         stickyLayoutHelper.setStickyStart(true);
-        stickyLayoutAdapter = new TaobaoAdapter(mapArrayList,mContext,20,stickyLayoutHelper){
+        stickyLayoutAdapter = new TaobaoAdapter(listItem,mContext,1,stickyLayoutHelper){
             @Override
             public void onBindViewHolder(@NonNull TaobaoAdapter.MainViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
                 if (position ==0){
-                    holder.textView.setText("Stick");
+                    holder.textView.setText("我是浮动控件");
 
                 }
 
@@ -143,7 +131,7 @@ public class TaobaoActivity extends AppCompatActivity {
         gridLayoutHelper.setHGap(20);
         //设置是否自动填充空白区域
         gridLayoutHelper.setAutoExpand(true);
-        gridLayoutAdapter = new TaobaoAdapter(mapArrayList,this,20,gridLayoutHelper){
+        gridLayoutAdapter = new TaobaoAdapter(listItem,this,20,gridLayoutHelper){
             @Override
             public void onBindViewHolder(@NonNull TaobaoAdapter.MainViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
@@ -161,6 +149,5 @@ public class TaobaoActivity extends AppCompatActivity {
             }
         };
         delegateAdapter.addAdapter(gridLayoutAdapter);
-
     }
 }
