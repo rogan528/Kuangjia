@@ -1,38 +1,38 @@
 package com.zhangbin.mykuangjia.taobao;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.ViewGroup;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
+import com.alibaba.android.vlayout.layout.ColumnLayoutHelper;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
+import com.alibaba.android.vlayout.layout.OnePlusNLayoutHelper;
+import com.alibaba.android.vlayout.layout.ScrollFixLayoutHelper;
+import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
+import com.alibaba.android.vlayout.layout.StaggeredGridLayoutHelper;
 import com.alibaba.android.vlayout.layout.StickyLayoutHelper;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.View;
-import android.widget.GridView;
-import android.widget.LinearLayout;
 
 import com.zhangbin.mykuangjia.R;
 import com.zhangbin.mykuangjia.taobao.adapter.TaobaoAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 public class TaobaoActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList listItem;
     private Context mContext;
-    private TaobaoAdapter linearLayoutAdapter,stickyLayoutAdapter,gridLayoutAdapter;
+    private TaobaoAdapter linearLayoutAdapter,stickyLayoutAdapter,gridLayoutAdapter,scrollFixLayoutAdapter
+            ,columnLayoutAdapter,singleLayoutAdapter,onePlusNLayoutAdapter,staggerGridLayoutAdapter;
     DelegateAdapter delegateAdapter;
     List<DelegateAdapter.Adapter> adapters;
 
@@ -64,6 +64,10 @@ public class TaobaoActivity extends AppCompatActivity {
             listItem.add(map);
         }
     }
+
+    /**
+     * 适配器
+     */
     private void initAdapter() {
         VirtualLayoutManager virtualLayoutManager = new VirtualLayoutManager(mContext);
         recyclerView.setLayoutManager(virtualLayoutManager);
@@ -74,8 +78,14 @@ public class TaobaoActivity extends AppCompatActivity {
         linearLayoutShow();
         stickyLayoutShow();
         gridLayoutShow();
+        scrollFixLayoutShow();
+        columnLayoutShow();
+        singleLayoutShow();
+        onePlusNLayoutShow();
+        staggerGridLayoutShow();
         recyclerView.setAdapter(delegateAdapter);
     }
+
 
 
 
@@ -100,6 +110,9 @@ public class TaobaoActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * 定格布局
+     */
     private void stickyLayoutShow() {
         StickyLayoutHelper stickyLayoutHelper = new StickyLayoutHelper();
         stickyLayoutHelper.setItemCount(1);
@@ -110,7 +123,7 @@ public class TaobaoActivity extends AppCompatActivity {
             public void onBindViewHolder(@NonNull TaobaoAdapter.MainViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
                 if (position ==0){
-                    holder.textView.setText("我是浮动控件");
+                    holder.textView.setText("我是定格控件");
 
                 }
 
@@ -119,6 +132,10 @@ public class TaobaoActivity extends AppCompatActivity {
 
         delegateAdapter.addAdapter(stickyLayoutAdapter);
     }
+
+    /**
+     * 网格布局
+     */
     private void gridLayoutShow() {
         //--------------网格布局-------------------->
         GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(3);
@@ -149,5 +166,142 @@ public class TaobaoActivity extends AppCompatActivity {
             }
         };
         delegateAdapter.addAdapter(gridLayoutAdapter);
+    }
+
+    /**
+     * 固定布局
+     */
+    private void scrollFixLayoutShow() {
+        //固定位置，x偏移量,y偏移量
+        ScrollFixLayoutHelper scrollFixLayoutHelper = new ScrollFixLayoutHelper(ScrollFixLayoutHelper.BOTTOM_RIGHT,100,200);
+        scrollFixLayoutHelper.setItemCount(1);
+        scrollFixLayoutHelper.setPadding(10,10,10,10);
+        scrollFixLayoutHelper.setMargin(20,20,20,20);
+        scrollFixLayoutHelper.setBgColor(Color.GRAY);
+        scrollFixLayoutHelper.setAspectRatio(6);
+        scrollFixLayoutHelper.setShowType(ScrollFixLayoutHelper.SHOW_ON_ENTER);
+        scrollFixLayoutAdapter= new TaobaoAdapter(listItem,mContext,1,scrollFixLayoutHelper){
+            @Override
+            public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
+                super.onBindViewHolder(holder, position);
+                if (position ==0){
+                    holder.textView.setText("固定布局");
+                }
+            }
+        };
+        delegateAdapter.addAdapter(scrollFixLayoutAdapter);
+    }
+
+    /**
+     * 栅格栏布局
+     */
+    private void columnLayoutShow() {
+        ColumnLayoutHelper columnLayoutHelper = new ColumnLayoutHelper();
+        columnLayoutHelper.setPadding(10,10,10,10);
+        columnLayoutHelper.setMargin(20,20,20,20);
+        columnLayoutHelper.setAspectRatio(6);
+        columnLayoutHelper.setWeights(new float[]{30,30,10,30});
+        columnLayoutAdapter = new TaobaoAdapter(listItem,mContext,4,columnLayoutHelper){
+            @Override
+            public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
+                super.onBindViewHolder(holder, position);
+                if (position ==0){
+                    holder.textView.setText("栅格栏布局");
+                    holder.itemView.setBackgroundColor(Color.RED);
+                }else if (position ==1){
+                    holder.itemView.setBackgroundColor(Color.YELLOW);
+                }else {
+                    holder.itemView.setBackgroundColor(Color.BLUE);
+                }
+            }
+        };
+        delegateAdapter.addAdapter(columnLayoutAdapter);
+    }
+
+    /**
+     * 一格布局
+     */
+    private void singleLayoutShow(){
+        SingleLayoutHelper singleLayoutHelper = new SingleLayoutHelper();
+        singleLayoutHelper.setPadding(10,10,10,10);
+        singleLayoutHelper.setMargin(20,20,20,20);
+        singleLayoutHelper.setAspectRatio(6);
+        singleLayoutAdapter = new TaobaoAdapter(listItem,mContext,1,singleLayoutHelper){
+            @Override
+            public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
+                super.onBindViewHolder(holder, position);
+                if (position ==0){
+                    holder.textView.setText("一格布局");
+                    holder.itemView.setBackgroundColor(Color.GRAY);
+                }
+            }
+        };
+        delegateAdapter.addAdapter(singleLayoutAdapter);
+    }
+
+    /**
+     * 一拖N布局
+     */
+    private void onePlusNLayoutShow() {
+        OnePlusNLayoutHelper onePlusNLayoutHelper = new OnePlusNLayoutHelper();
+        //设置行比重
+        onePlusNLayoutHelper.setColWeights(new float[]{40,60,30,30});
+        //设置高比重
+        onePlusNLayoutHelper.setRowWeight(50);
+        onePlusNLayoutHelper.setPadding(10,10,10,10);
+        onePlusNLayoutHelper.setMargin(20,20,20,20);
+        //设置宽高比
+        onePlusNLayoutHelper.setAspectRatio(3);
+        onePlusNLayoutHelper.setItemCount(5);
+        onePlusNLayoutAdapter = new TaobaoAdapter(listItem,mContext,4,onePlusNLayoutHelper){
+            @Override
+            public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
+                super.onBindViewHolder(holder, position);
+                if (position ==0){
+                    holder.itemView.setBackgroundColor(Color.RED);
+                }else if (position ==1){
+                    holder.itemView.setBackgroundColor(Color.BLUE);
+                }else if(position ==2){
+                    holder.itemView.setBackgroundColor(Color.BLACK);
+                }else {
+                    holder.itemView.setBackgroundColor(Color.GREEN);
+                }
+
+            }
+        };
+        delegateAdapter.addAdapter(onePlusNLayoutAdapter);
+
+    }
+
+    /**
+     * 瀑布流布局
+     */
+    private void staggerGridLayoutShow() {
+        StaggeredGridLayoutHelper staggeredGridLayoutHelper = new StaggeredGridLayoutHelper();
+        staggeredGridLayoutHelper.setItemCount(20);
+        staggeredGridLayoutHelper.setPadding(10,10,10,10);
+        staggeredGridLayoutHelper.setMargin(20,20,20,20);
+        staggeredGridLayoutHelper.setAspectRatio(3);
+        //每行的个数
+        staggeredGridLayoutHelper.setLane(3);
+        //水平间距
+        staggeredGridLayoutHelper.setHGap(20);
+        staggeredGridLayoutHelper.setVGap(15);
+        staggerGridLayoutAdapter = new TaobaoAdapter(listItem,mContext,20,staggeredGridLayoutHelper){
+            @Override
+            public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
+                super.onBindViewHolder(holder, position);
+                ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,150+position%5*20);
+                holder.itemView.setLayoutParams(layoutParams);
+                if (position >10){
+                    holder.itemView.setBackgroundColor(0x66cc0000);
+                }else if (position %2 ==0){
+                    holder.itemView.setBackgroundColor(0xaa22ff22);
+                }else {
+                    holder.itemView.setBackgroundColor(0xccff22ff);
+                }
+            }
+        };
+        delegateAdapter.addAdapter(staggerGridLayoutAdapter);
     }
 }
