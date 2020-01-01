@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv_left"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:drawablePadding="8dp"
+    android:gravity="center"
+    tools:drawableStart="@drawable/shape_indicator"
+    tools:text="我是左边的第0个" />

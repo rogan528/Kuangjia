@@ -47,7 +47,7 @@ public class TaobaoAdapter extends DelegateAdapter.Adapter<TaobaoAdapter.MainVie
     @NonNull
     @Override
     public MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MainViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item,parent,false));
+        return new MainViewHolder(LayoutInflater.from(mContext).inflate(R.layout.taobao_item,parent,false));
     }
 
     @Override

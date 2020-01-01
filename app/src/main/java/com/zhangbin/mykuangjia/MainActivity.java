@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.zhangbin.mykuangjia.liandong.recyclerview.RecyclerViewActivity;
 import com.zhangbin.mykuangjia.taobao.TaobaoActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +23,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, TaobaoActivity.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.btn_shuangrecycleview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, RecyclerViewActivity.class);
                 startActivity(intent);
             }
         });
