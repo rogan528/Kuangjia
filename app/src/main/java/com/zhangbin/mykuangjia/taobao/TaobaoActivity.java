@@ -97,6 +97,7 @@ public class TaobaoActivity extends AppCompatActivity {
 
 
     /**
+     * 
      * 线性布局
      */
     private void linearLayoutShow() {

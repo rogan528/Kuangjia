@@ -28,7 +28,7 @@ public class CenterLayoutManager extends LinearLayoutManager {
     }
 
     @Override
-    public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state, int position) {
+        public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state, int position) {
         CenterSmoothScroller centerSmoothScroller = new CenterSmoothScroller(recyclerView.getContext());
         centerSmoothScroller.setTargetPosition(position);
         startSmoothScroll(centerSmoothScroller);
