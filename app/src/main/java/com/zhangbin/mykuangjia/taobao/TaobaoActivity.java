@@ -3,6 +3,8 @@ package com.zhangbin.mykuangjia.taobao;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -42,6 +44,7 @@ public class TaobaoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_taobao);
         mContext = this;
+        Log.e("zhangbin","TaobaoActivity onCreate");
         initView();
         initData();
         initAdapter();
@@ -97,7 +100,7 @@ public class TaobaoActivity extends AppCompatActivity {
 
 
     /**
-     * 
+     *
      * 线性布局
      */
     private void linearLayoutShow() {
@@ -311,5 +314,40 @@ public class TaobaoActivity extends AppCompatActivity {
             }
         };
         delegateAdapter.addAdapter(staggerGridLayoutAdapter);
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e("zhangbin","TaobaoActivity onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("zhangbin","TaobaoActivity onResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.e("zhangbin","TaobaoActivity onRestart");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e("zhangbin","TaobaoActivity onStop");
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        Log.e("zhangbin","TaobaoActivity onSaveInstanceState");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("zhangbin","TaobaoActivity onDestroy");
     }
 }

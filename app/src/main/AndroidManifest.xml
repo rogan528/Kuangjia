@@ -14,7 +14,8 @@
             android:name=".taobao.TaobaoActivity"
             android:label="@string/title_activity_taobao"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
