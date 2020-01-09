@@ -1,11 +1,14 @@
 package com.zhangbin.mykuangjia.taobao;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
@@ -23,6 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.zhangbin.mykuangjia.MainActivity;
 import com.zhangbin.mykuangjia.R;
 import com.zhangbin.mykuangjia.taobao.adapter.TaobaoAdapter;
 
@@ -30,7 +34,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class TaobaoActivity extends AppCompatActivity {
+public class TaobaoActivity extends AppCompatActivity implements View.OnClickListener{
     private RecyclerView recyclerView;
     private ArrayList listItem;
     private Context mContext;
@@ -38,6 +42,7 @@ public class TaobaoActivity extends AppCompatActivity {
             ,columnLayoutAdapter,singleLayoutAdapter,onePlusNLayoutAdapter,staggerGridLayoutAdapter;
     DelegateAdapter delegateAdapter;
     List<DelegateAdapter.Adapter> adapters;
+    Button mBackMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +66,8 @@ public class TaobaoActivity extends AppCompatActivity {
      */
     private void initView() {
         recyclerView = findViewById(R.id.my_recycler_view);
+        mBackMain = findViewById(R.id.btn_back_main);
+        mBackMain.setOnClickListener(this);
     }
     /**
      * 添加数据
@@ -315,6 +322,7 @@ public class TaobaoActivity extends AppCompatActivity {
         };
         delegateAdapter.addAdapter(staggerGridLayoutAdapter);
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -334,6 +342,12 @@ public class TaobaoActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e("zhangbin","TaobaoActivity onPause");
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
         Log.e("zhangbin","TaobaoActivity onStop");
@@ -349,5 +363,17 @@ public class TaobaoActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.e("zhangbin","TaobaoActivity onDestroy");
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        switch (id){
+            case R.id.btn_back_main:
+                Intent intent = new Intent(mContext, MainActivity.class);
+                startActivity(intent);
+                break;
+
+        }
     }
 }

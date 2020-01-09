@@ -58,6 +58,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e("zhangbin","MainActivity onPause");
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
         Log.e("zhangbin","MainActivity onStop");
