@@ -2,9 +2,13 @@ package com.zhangbin.mykuangjia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
@@ -23,6 +27,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mContext = this;
         Log.e("zhangbin","MainActivity onCreate");
+
+        // Here, thisActivity is the current activity
+
+            // Permission is not granted
+            // Should we show an explanation?
+        if (!ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.CAMERA)) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 0);
+        }
+
         findViewById(R.id.btn_taobao).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
